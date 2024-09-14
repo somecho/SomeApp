@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.29)
 project(SomeApp)
 set(CMAKE_CXX_STANDARD 23)
 
-find_package(Dawn)
-find_package(glfw3)
+find_package(Dawn REQUIRED)
+find_package(glfw3 REQUIRED)
+find_package(glm REQUIRED)
 
 message(STATUS "${PROJECT_NAME} - Using GLFW: Version ${glfw3_VERSION}")
 
@@ -23,4 +24,4 @@ add_library(SomeApp
 )
 
 target_include_directories(SomeApp PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
-target_link_libraries(SomeApp PUBLIC dawn::webgpu_dawn glm glfw)
+target_link_libraries(SomeApp PUBLIC dawn::webgpu_dawn glm::glm glfw)
